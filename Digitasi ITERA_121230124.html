@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasil Latihan WebGIS Shofa 121230124</title>
+    <!-- LEAFLET CSS -->
+     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+     <style>
+        #map{
+            width: 100%;
+            height: 100vh;
+        }
+     </style>
+</head>
+<body>
+    <div id="map"></div>
+</body>
+</html>
+ <!-- LEAFLET JAVASCRIPT -->
+ <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="#"></script>
+ <script>
+    <!-- LOKASI KAJIAN -->
+    var map = L.map('map').setView([-5.367016, 105.317890], 15);
+    <!-- BASEMAP OPENSTREETMAP -->
+    var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+     });
+     osm.addTo(map);
+     <!-- BASEMAP ESRI -->
+var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+    });
+Esri_WorldImagery.addTo(map); 
+<!-- POSISI GEDUNG OZT -->
+//L.marker([  -5.361458, 105.309925]).addTo(map);
+Esri_WorldImagery.addTo(map); 
+<!-- POSISI GEDUNG F -->
+//L.marker([  -5.361394, 105.313752]).addTo(map);
+Esri_WorldImagery.addTo(map); 
+<!-- POSISI Embung B -->
+//L.marker([   -5.359398, 105.313703]).addTo(map);
+<!-- BUNDARAN YANG SERING SAYA LANGGAR ATURAN SAAT BERLALU LINTAS DI ITERA -->
+var bundaran = L.circle([ -5.363156, 105.312634], {
+    color: 'red',
+    fillColor: '#f03',
+    fillOpacity: 0.5,
+    radius: 20
+}).addTo(map);
+<!-- BUNDARAN INI JUGA SERING SAYA LANGGAR SETELAH SELESAI KULIAH DI GKU 2 -->
+var bundaran = L.circle([-5.360813, 105.314847], {
+    color: 'green',
+    fillColor: '#00ff00',
+    fillOpacity: 0.5,
+    radius: 35
+}).addTo(map);
+<!-- POLIGON BANGUNAN  GEDUNG F -->
+
+var polygon = L.polygon([
+    [-5.359799, 105.315831],
+    [-5.359957, 105.315831],
+    [-5.359957, 105.315571],
+    [-5.360474, 105.315571],
+    [-5.360474, 105.315401],
+    [-5.359635, 105.315401],
+    [-5.359635, 105.315571],
+    [-5.359799, 105.315571]
+]).addTo(map);
+// Menambahkan label ke polygon
+ polygon.bindPopup("Gedung F");
+
+<!-- POLIGON EMBUNG S --> 
+// Koordinat baru untuk polygon Embung Sumatra
+var latlngs = [
+    [ -5.369415, 105.310261],
+    [ -5.369308, 105.310120],
+    [ -5.369312, 105.309918],
+    [ -5.369452, 105.309683],
+    [ -5.369637, 105.309530],
+    [ -5.370015, 105.309514],
+    [ -5.370327, 105.309670],
+    [ -5.370676, 105.309939],
+    [ -5.370952, 105.310327],
+    [ -5.371067, 105.310731],
+    [ -5.370812, 105.311148],
+    [ -5.370422, 105.311177],
+    [ -5.370245, 105.311024],
+    [ -5.369953, 105.310921],
+    [ -5.369682, 105.310686],
+    [ -5.369579, 105.310430]  // Kembali ke titik awal untuk menutup poligon
+];
+
+// Menambahkan polygon ke peta
+var polygon = L.polygon(latlngs, {
+    color: 'blue',  // Warna garis polygon
+    fillColor: '#00ffff',  // Warna isi polygon (biru muda)
+    fillOpacity: 0.5  // Transparansi isi polygon
+}).addTo(map);
+// Menambahkan label ke polygon
+polygon.bindPopup("Embung Sumatera");
+
+<!-- POLIGON EMBUNG E -->
+// Koordinat baru untuk polygon Embung E
+var latlngs = [
+    [ -5.364975, 105.313438],
+    [ -5.365985, 105.313380],
+    [ -5.365670, 105.317112],
+    [ -5.365339, 105.319938],
+    [ -5.364388, 105.319813],
+    [ -5.364685, 105.316513]  // Kembali ke titik awal untuk menutup poligon
+];
+
+// Menambahkan polygon ke peta
+var polygon = L.polygon(latlngs, {
+    color: 'blue',  // Warna garis polygon
+    fillColor: '#00ffff',  // Warna isi polygon (biru muda)
+    fillOpacity: 0.5  // Transparansi isi polygon
+}).addTo(map);
+// Menambahkan label ke polygon
+polygon.bindPopup("Embung E");
+
+<!-- POLIGON EMBUNG A -->
+// Koordinat baru untuk polygon Embung A
+var latlngs = [
+    [ -5.358247, 105.310882],
+    [ -5.357936, 105.312814],
+    [ -5.357453, 105.314186],
+    [ -5.357162, 105.314156],
+    [ -5.357644, 105.312567],
+    [ -5.357971, 105.310858]  // Kembali ke titik awal untuk menutup poligon
+];
+
+// Menambahkan polygon ke peta
+var polygon = L.polygon(latlngs, {
+    color: 'blue',  // Warna garis polygon
+    fillColor: '#00ffff',  // Warna isi polygon (biru muda)
+    fillOpacity: 0.5  // Transparansi isi polygon
+}).addTo(map);
+    // Menambahkan label ke polygon
+polygon.bindPopup("Embung A");
+
+<!-- POLIGON EMBUNG B -->
+// Koordinat baru untuk polygon Embung B
+var latlngs = [
+    [ -5.358757, 105.307726],
+    [ -5.359794, 105.307631],
+    [ -5.359761, 105.307912],
+    [ -5.359255, 105.308264],
+    [ -5.358847, 105.308563],
+    [ -5.358672, 105.308592]  // Kembali ke titik awal untuk menutup poligon
+];
+
+// Menambahkan polygon ke peta
+var polygon = L.polygon(latlngs, {
+    color: 'blue',  // Warna garis polygon
+    fillColor: '#00ffff',  // Warna isi polygon (biru muda)
+    fillOpacity: 0.5  // Transparansi isi polygon
+}).addTo(map);
+    // Menambahkan label ke polygon
+polygon.bindPopup("Embung B");
+
+<!-- POLIGON EMBUNG D -->
+// Koordinat baru untuk polygon Embung B
+var latlngs = [
+    [  -5.360088, 105.320341],
+    [  -5.360705, 105.320502],
+    [  -5.360352, 105.321199],
+    [  -5.359806, 105.320905]  // Kembali ke titik awal untuk menutup poligon
+];
+
+// Menambahkan polygon ke peta
+var polygon = L.polygon(latlngs, {
+    color: 'blue',  // Warna garis polygon
+    fillColor: '#00ffff',  // Warna isi polygon (biru muda)
+    fillOpacity: 0.5  // Transparansi isi polygon
+}).addTo(map);
+    // Menambahkan label ke polygon
+polygon.bindPopup("Embung D");
+
+<!-- POLIGON EMBUNG F -->
+// Koordinat baru untuk polygon Embung B
+var latlngs = [
+    [ -5.368260, 105.319677],
+    [ -5.368939, 105.318913],
+    [ -5.369297, 105.319078],
+    [ -5.368998, 105.319323],
+    [ -5.368886, 105.320156],  
+    [ -5.368251, 105.320130] // Kembali ke titik awal untuk menutup poligon
+];
+
+// Menambahkan polygon ke peta
+var polygon = L.polygon(latlngs, {
+    color: 'blue',  // Warna garis polygon
+    fillColor: '#00ffff',  // Warna isi polygon (biru muda)
+    fillOpacity: 0.5  // Transparansi isi polygon
+}).addTo(map);
+    // Menambahkan label ke polygon
+polygon.bindPopup("Embung F");
+
+<!-- POLIGON KOLAM R -->
+// Koordinat baru untuk polygon Kolam Rekreasi
+var latlngs = [
+    [  -5.360163, 105.313195],
+    [  -5.359651, 105.313675],
+    [  -5.359504, 105.313918],
+    [  -5.359353, 105.314208],
+    [  -5.358609, 105.314194],
+    [  -5.359102, 105.313637],
+    [  -5.359462, 105.313295],  // Kembali ke titik awal untuk menutup poligon
+];
+
+// Menambahkan polygon ke peta
+var polygon = L.polygon(latlngs, {
+    color: 'blue',  // Warna garis polygon
+    fillColor: '#00ffff',  // Warna isi polygon (biru muda)
+    fillOpacity: 0.5  // Transparansi isi polygon
+}).addTo(map);
+// Menambahkan label ke polygon
+polygon.bindPopup("Kolam Rekreasi");
+
+<!-- POLIGON AREA BASEBALL -->
+// Koordinat baru untuk polygon Kolam Rekreasi
+var latlngs = [
+    [ -5.367688, 105.315041],
+    [ -5.369550, 105.314989],
+    [ -5.369523, 105.316529],
+    [ -5.367681, 105.316549],  // Kembali ke titik awal untuk menutup poligon
+];
+
+// Menambahkan polygon ke peta
+var polygon = L.polygon(latlngs, {
+    color: 'black',  // Warna garis polygon
+    fillColor: '#FFCC00',  // Warna isi polygon (jingga)
+    fillOpacity: 0.5  // Transparansi isi polygon
+}).addTo(map);
+// Menambahkan label ke polygon
+polygon.bindPopup("Area Baseball");
+
+<!-- POLIGON TAMAN ALAT -->
+// Koordinat baru untuk polygon Kolam Rekreasi
+var latlngs = [
+    [ -5.361138, 105.311545],
+    [ -5.362895, 105.311499],
+    [ -5.362901, 105.312388],
+    [ -5.361119, 105.312394],  // Kembali ke titik awal untuk menutup poligon
+];
+
+// Menambahkan polygon ke peta
+var polygon = L.polygon(latlngs, {
+    color: 'black',  // Warna garis polygon
+    fillColor: '#CCCCCC',  // Warna isi polygon (abu)
+    fillOpacity: 0.5  // Transparansi isi polygon
+}).addTo(map);
+// Menambahkan label ke polygon
+polygon.bindPopup("Taman Alat UPT MKG");
+
+<!-- POLIGON HUTAN GED E -->
+// Koordinat baru untuk polygon Kolam Rekreasi
+var latlngs = [
+    [ -5.358407, 105.316706],
+    [ -5.358358, 105.315136],
+    [ -5.359521, 105.315148],
+    [ -5.359499, 105.315848],
+    [ -5.360719, 105.315830],
+    [ -5.360652, 105.316682],
+    [ -5.359476, 105.316723], // Kembali ke titik awal untuk menutup poligon
+];
+
+// Menambahkan polygon ke peta
+var polygon = L.polygon(latlngs, {
+    color: 'black',  // Warna garis polygon
+    fillColor: '#99FF99',  // Warna isi polygon (hijau muda)
+    fillOpacity: 0.5  // Transparansi isi polygon
+}).addTo(map);
+// Menambahkan label ke polygon
+polygon.bindPopup("Hutan");
+
+<!-- POLIGON HUTAN GED F -->
+// Koordinat baru untuk polygon Kolam Rekreasi
+var latlngs = [
+    [ -5.360942, 105.316721],
+    [ -5.360979, 105.315257],
+    [ -5.361169, 105.315084],
+    [ -5.361280, 105.314845],
+    [ -5.361145, 105.314574],
+    [ -5.360965, 105.314412],
+    [ -5.360945, 105.314259],
+    [ -5.361801, 105.314210],
+    [ -5.361852, 105.312738],
+    [ -5.362917, 105.312763],
+    [ -5.363102, 105.316676],
+    [ -5.362012, 105.316790], // Kembali ke titik awal untuk menutup poligon
+];
+
+// Menambahkan polygon ke peta
+var polygon = L.polygon(latlngs, {
+    color: 'black',  // Warna garis polygon
+    fillColor: '#99FF99',  // Warna isi polygon (hijau muda)
+    fillOpacity: 0.5  // Transparansi isi polygon
+}).addTo(map);
+// Menambahkan label ke polygon
+polygon.bindPopup("Hutan");
+
+<!-- POLIGON HUTAN BASEBALL -->
+// Koordinat baru untuk polygon Kolam Rekreasi
+var latlngs = [
+    [ -5.367619, 105.316769],
+    [ -5.369527, 105.316751],
+    [ -5.369650, 105.316566],
+    [ -5.369668, 105.314906],
+    [ -5.372203, 105.314849],
+    [ -5.372178, 105.321420],
+    [ -5.361208, 105.321558],
+    [ -5.361357, 105.320519],
+    [ -5.362184, 105.320930],
+    [ -5.368983, 105.320239],
+    [ -5.369151, 105.319377],
+    [ -5.369383, 105.319058],
+    [ -5.368935, 105.318835],
+    [ -5.368228, 105.319602],
+    [ -5.368128, 105.320181], // Kembali ke titik awal untuk menutup poligon
+];
+
+// Menambahkan polygon ke peta
+var polygon = L.polygon(latlngs, {
+    color: 'black',  // Warna garis polygon
+    fillColor: '#99FF99',  // Warna isi polygon (hijau muda)
+    fillOpacity: 0.5  // Transparansi isi polygon
+}).addTo(map);
+// Menambahkan label ke polygon
+polygon.bindPopup("Hutan");
+
+<!-- POLIGON HUTAN EMBUNG A -->
+// Koordinat baru untuk polygon Kolam Rekreasi
+var latlngs = [
+    [ -5.358266, 105.309128],
+    [ -5.360061, 105.308576],
+    [ -5.360128, 105.311161],
+    [ -5.358419, 105.311131],
+    [ -5.358375, 105.310797],
+    [ -5.357879, 105.310827], // Kembali ke titik awal untuk menutup poligon
+];
+
+// Menambahkan polygon ke peta
+var polygon = L.polygon(latlngs, {
+    color: 'black',  // Warna garis polygon
+    fillColor: '#99FF99',  // Warna isi polygon (hijau muda)
+    fillOpacity: 0.5  // Transparansi isi polygon
+}).addTo(map);
+// Menambahkan label ke polygon
+polygon.bindPopup("Hutan");
+
+<!-- POLIGON HUTAN KANTIN -->
+// Koordinat baru untuk polygon Kolam Rekreasi
+var latlngs = [
+    [ -5.360990, 105.311385],
+    [ -5.360006, 105.311405],
+    [ -5.359110, 105.312279],
+    [ -5.359768, 105.312314],
+    [ -5.359793, 105.312975],
+    [ -5.360802, 105.312965], // Kembali ke titik awal untuk menutup poligon
+];
+
+// Menambahkan polygon ke peta
+var polygon = L.polygon(latlngs, {
+    color: 'black',  // Warna garis polygon
+    fillColor: '#99FF99',  // Warna isi polygon (hijau muda)
+    fillOpacity: 0.5  // Transparansi isi polygon
+}).addTo(map);
+// Menambahkan label ke polygon
+polygon.bindPopup("Hutan");
+
+<!-- POLIGON HUTAN ASRAMA -->
+// Koordinat baru untuk polygon Kolam Rekreasi
+var latlngs = [
+    [ -5.361162, 105.321549],
+    [ -5.353538, 105.321472],
+    [ -5.353830, 105.320791],
+    [ -5.355027, 105.320185],
+    [ -5.356251, 105.316883],
+    [ -5.358173, 105.316958],
+    [ -5.358117, 105.320052],
+    [ -5.360815, 105.320129], 
+    [ -5.361226, 105.320447],
+    [ -5.361152, 105.320649],
+    [ -5.360021, 105.320241], 
+    [ -5.359697, 105.320990],
+    [ -5.360621, 105.321358],  // Kembali ke titik awal untuk menutup poligon
+];
+
+// Menambahkan polygon ke peta
+var polygon = L.polygon(latlngs, {
+    color: 'black',  // Warna garis polygon
+    fillColor: '#99FF99',  // Warna isi polygon (hijau muda)
+    fillOpacity: 0.5  // Transparansi isi polygon
+}).addTo(map);
+// Menambahkan label ke polygon
+polygon.bindPopup("Hutan");
+
+<!-- POLIGON LAHAN TERBANGUN ASRAMA -->
+// Koordinat baru untuk polygon Kolam Rekreasi
+var latlngs = [
+    [ -5.358356, 105.319851],
+    [  -5.358395, 105.316970],
+    [ -5.363041, 105.317011],
+    [ -5.362988, 105.320580],
+    [ -5.361690, 105.320438],
+    [ -5.360724, 105.319807], // Kembali ke titik awal untuk menutup poligon
+];
+
+// Menambahkan polygon ke peta
+var polygon = L.polygon(latlngs, {
+    color: 'Red',  // Warna garis polygon
+    fillColor: '#FF6600',  // Warna isi polygon (merah)
+    fillOpacity: 0.5  // Transparansi isi polygon
+}).addTo(map);
+// Menambahkan label ke polygon
+polygon.bindPopup("Lahan Terbangun");
+
+<!-- POLIGON LAHAN TERBANGUN GK1 -->
+// Koordinat baru untuk polygon Kolam Rekreasi
+var latlngs = [
+    [  -5.360248, 105.311143],
+    [ -5.360256, 105.308499],
+    [ -5.363051, 105.308442],
+    [ -5.362945, 105.311012], // Kembali ke titik awal untuk menutup poligon
+];
+
+// Menambahkan polygon ke peta
+var polygon = L.polygon(latlngs, {
+    color: 'Red',  // Warna garis polygon
+    fillColor: '#FF6600',  // Warna isi polygon (merah)
+    fillOpacity: 0.5  // Transparansi isi polygon
+}).addTo(map);
+// Menambahkan label ke polygon
+polygon.bindPopup("Lahan Terbangun");
+
+<!-- POLIGON LAHAN TERBANGUN KEBUN RAYA -->
+// Koordinat baru untuk polygon Kolam Rekreasi
+var latlngs = [
+    [ -5.363351, 105.311012],
+    [ -5.363278, 105.308450],
+    [ -5.369138, 105.308495],
+    [ -5.369024, 105.311690],
+    [ -5.372277, 105.311741],
+    [ -5.372236, 105.314678],
+    [ -5.367676, 105.314668],
+    [ -5.367429, 105.311276],  // Kembali ke titik awal untuk menutup poligon
+];
+
+// Menambahkan polygon ke peta
+var polygon = L.polygon(latlngs, {
+    color: 'Red',  // Warna garis polygon
+    fillColor: '#FF6600',  // Warna isi polygon (merah)
+    fillOpacity: 0.5  // Transparansi isi polygon
+}).addTo(map);
+// Menambahkan label ke polygon
+polygon.bindPopup("Lahan Terbangun");
+
+<!-- POLIGON HUTAN EMBUNG E -->
+// Koordinat baru untuk polygon Kolam Rekreasi
+var latlngs = [
+    [ -5.366106, 105.313336],
+    [ -5.365469, 105.320000],
+    [ -5.364328, 105.319985],
+    [ -5.364904, 105.313378],
+    [ -5.363291, 105.313315],
+    [ -5.363420, 105.320531],
+    [ -5.366878, 105.320379],
+    [ -5.367418, 105.313409], // Kembali ke titik awal untuk menutup poligon
+];
+
+// Menambahkan polygon ke peta
+var polygon = L.polygon(latlngs, {
+    color: 'black',  // Warna garis polygon
+    fillColor: '#99FF99',  // Warna isi polygon (hijau muda)
+    fillOpacity: 0.5  // Transparansi isi polygon
+}).addTo(map);
+// Menambahkan label ke polygon
+polygon.bindPopup("Hutan");
+
+<!-- POLIGON HUTAN DEKET KEBUN -->
+// Koordinat baru untuk polygon Kolam Rekreasi
+var latlngs = [
+    [ -5.363421, 105.311419],
+    [ -5.366762, 105.311469],
+    [ -5.367382, 105.312186],
+    [ -5.367416, 105.313317],
+    [ -5.363327, 105.313158], // Kembali ke titik awal untuk menutup poligon
+];
+
+// Menambahkan polygon ke peta
+var polygon = L.polygon(latlngs, {
+    color: 'black',  // Warna garis polygon
+    fillColor: '#99FF99',  // Warna isi polygon (hijau muda)
+    fillOpacity: 0.5  // Transparansi isi polygon
+}).addTo(map);
+// Menambahkan label ke polygon
+polygon.bindPopup("Hutan");
+
+<!-- MENAMPILKAN NAMA GEDUNG OZT -->
+    var Gedung_OZT = L.marker([-5.362073, 105.310547]);
+    var namagedungOZT = Gedung_OZT.bindPopup("Gedung_OZT").openPopup()
+    namagedungOZT.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG F -->
+    var Gedung_F = L.marker([-5.361394, 105.313752]);
+    var namagedungF = Gedung_F.bindPopup("Gedung_F").openPopup()
+    namagedungF.addTo(map);
+<!-- MENAMPILKAN NAMA KOLAM R -->
+    var Kolam_R = L.marker([-5.359398, 105.313703]);
+    var namakolamR = Kolam_R.bindPopup("Kolam_R").openPopup()
+    namakolamR.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG LAB 2 -->
+    var Gedung_Lab2 = L.marker([ -5.361544, 105.310565]);
+    var namagedunglab2 = Gedung_Lab2.bindPopup("Gedung_Lab2").openPopup()
+    namagedunglab2.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG GKU 1 -->
+    var Gedung_GKU1 = L.marker([  -5.360908, 105.310539]);
+    var namagedunggku1 = Gedung_GKU1.bindPopup("Gedung_GKU1").openPopup()
+    namagedunggku1.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG LAB 1 -->
+    var Gedung_Lab1 = L.marker([ -5.360381, 105.310214]);
+    var namagedunglab1 = Gedung_Lab1.bindPopup("Gedung_Lab1").openPopup()
+    namagedunglab1.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG LAB 3 -->
+    var Gedung_Lab3 = L.marker([  -5.360442, 105.309172]);
+    var namagedunglab3 = Gedung_Lab3.bindPopup("Gedung_Lab3").openPopup()
+    namagedunglab3.addTo(map);
+<!-- MENAMPILKAN NAMA KANTIN RK -->
+    var Kantin_RK = L.marker([ -5.359531, 105.312583]);
+    var namakantinrk = Kantin_RK.bindPopup("Kantin_RK").openPopup()
+    namakantinrk.addTo(map);
+<!-- MENAMPILKAN NAMA MASJID 1 -->
+    var Masjid_1 = L.marker([ -5.359155, 105.312619]);
+    var namamasjid1 = Masjid_1.bindPopup("Masjid_1").openPopup()
+    namamasjid1.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG C -->
+    var Gedung_C = L.marker([ -5.358631, 105.313456]);
+    var namagedungc = Gedung_C.bindPopup("Gedung_C").openPopup()
+    namagedungc.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG B -->
+    var Gedung_B = L.marker([ -5.357804, 105.315435]);
+    var namagedungb = Gedung_B.bindPopup("Gedung_B").openPopup()
+    namagedungb.addTo(map);
+<!-- MENAMPILKAN NAMA KANTIN BKL  -->
+    var Kantin_BKL = L.marker([ -5.357636, 105.316490]);
+    var namakantinbkl = Kantin_BKL.bindPopup("Kantin_BKL").openPopup()
+    namakantinbkl.addTo(map);
+<!-- MENAMPILKAN NAMA MASJID RAYA ITERA  -->
+    var Masjid_2 = L.marker([  -5.356816, 105.318759]);
+    var namamasjid2 = Masjid_2.bindPopup("Masjid_2").openPopup()
+    namamasjid2.addTo(map);
+<!-- MENAMPILKAN NAMA ASRAMA TB1  -->
+    var Asrama_TB1 = L.marker([ -5.358453, 105.317408]);
+    var namaasramatb1 = Asrama_TB1.bindPopup("Asrama_TB1").openPopup()
+    namaasramatb1.addTo(map);
+<!-- MENAMPILKAN NAMA ASRAMA TB2  -->
+    var Asrama_TB2 = L.marker([ -5.358505, 105.319375]);
+    var namaasramatb2 = Asrama_TB2.bindPopup("Asrama_TB2").openPopup()
+    namaasramatb2.addTo(map);
+<!-- MENAMPILKAN NAMA ASRAMA TB3 -->
+    var Asrama_TB3 = L.marker([  -5.359129, 105.319046]);
+    var namaasramatb3 =Asrama_TB3.bindPopup("Asrama_TB3").openPopup()
+    namaasramatb3.addTo(map);
+<!-- MENAMPILKAN NAMA ASRAMA TB 4  -->
+    var Asrama_TB4 = L.marker([   -5.359176, 105.317429]);
+    var namaasramatb4 = Asrama_TB4.bindPopup("Asrama_TB4").openPopup()
+    namaasramatb4.addTo(map);
+<!-- MENAMPILKAN NAMA ASRAMA TPB  -->
+    var Asrama_TPB = L.marker([ -5.358475, 105.318415]);
+    var namaasramatpb = Asrama_TPB.bindPopup("Asrama_TPB").openPopup()
+    namaasramatpb.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG OLAHRAGA  -->
+    var Gedung_OR = L.marker([ -5.362458, 105.318948]);
+    var namagedungor = Gedung_OR.bindPopup("Gedung_OR").openPopup()
+    namagedungor.addTo(map);
+<!-- MENAMPILKAN NAMA GEDUNG E  -->
+    var Gedung_E = L.marker([ -5.360124, 105.315511]);
+    var namagedunge = Gedung_E.bindPopup("Gedung_E").openPopup()
+    namagedunge.addTo(map);
+<!-- MENAMPILKAN NAMA TAMAN LABIRIN  -->
+    var Taman_Labirin = L.marker([ -5.369682, 105.312140]);
+    var namalabirin = Taman_Labirin.bindPopup("Taman_Labirin").openPopup()
+    namalabirin.addTo(map);
+<!-- MENAMPILKAN NAMA KEBUN RAYA -->
+    var Kebun_Raya = L.marker([  -5.367780, 105.310328]);
+    var namakebunraya = Kebun_Raya.bindPopup("Kebun_Raya").openPopup()
+    namakebunraya.addTo(map);
+
+var baseMaps = {
+        "OSM":osm,
+	    "ESRI":Esri_WorldImagery,
+};
+var overlayMaps = {
+    "Gedung B" : Gedung_B,
+    "Gedung C": Gedung_C,
+    "Gedung E": Gedung_E,
+    "Gedung F": Gedung_F,
+    "Gedung OZT": Gedung_OZT,
+    "Gedung GKU1": Gedung_GKU1,
+    "Gedung Lab1": Gedung_Lab1,
+    "Gedung Lab2": Gedung_Lab2,
+    "Gedung Lab3": Gedung_Lab3,
+    "Kolam R": Kolam_R,
+    "Kantin RK": Kantin_RK,
+    "Kantin BKL": Kantin_BKL,
+    "Masjid 1": Masjid_1,
+    "Masjid 2": Masjid_2,
+    "Asrama TB1": Asrama_TB1,
+    "Asrama TB2": Asrama_TB2,
+    "Asrama TB3": Asrama_TB3,
+    "Asrama TB4": Asrama_TB4,
+    "Asrama TPB": Asrama_TPB,
+    "Gedung OR": Gedung_OR,
+    "Taman Labirin": Taman_Labirin,
+    "Kebun Raya": Kebun_Raya,
+   
+};
+
+map.removeLayer(Gedung_B)
+map.removeLayer(Gedung_C)
+map.removeLayer(Gedung_E)
+map.removeLayer(Gedung_F)
+map.removeLayer(Gedung_OZT)
+map.removeLayer(Gedung_GKU1)
+map.removeLayer(Gedung_Lab1)
+map.removeLayer(Gedung_Lab2)
+map.removeLayer(Gedung_Lab3)
+map.removeLayer(Kolam_R)
+map.removeLayer(Kantin_RK)
+map.removeLayer(Kantin_BKL)
+map.removeLayer(Masjid_1)
+map.removeLayer(Masjid_2)
+map.removeLayer(Asrama_TB1)
+map.removeLayer(Asrama_TB2)
+map.removeLayer(Asrama_TB3)
+map.removeLayer(Asrama_TB4)
+map.removeLayer(Asrama_TPB)
+map.removeLayer(Gedung_OR)
+map.removeLayer(Taman_Labirin)
+map.removeLayer(Kebun_Raya)
+
+
+L.control.layers(baseMaps,overlayMaps,{collapsed : false}).addTo(map);
+</script>
